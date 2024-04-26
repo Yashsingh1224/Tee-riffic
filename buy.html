@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <title>Document</title>
+</head>
+<body>
+    
+        <div id="buy">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h1>Shop with Us!</h1>
+                <input type="text" id="name" placeholder="Your name" required>
+                <input type="email" id="email" placeholder="E-mail Id" required>
+                <input type="text" id="phone" placeholder="Phone number" required>
+                <input type="text" id="order" placeholder="Order number" required>
+                <textarea id="address" rows="4" placeholder="Your address"></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <a style="text-decoration: none;" href="index.html">Discard</a>
+        </div>
+        
+        <script src="https://smtpjs.com/v3/smtp.js">
+        </script>
+        <script>
+    function sendEmail()
+        {
+        Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "mr.stark42@outlook.com",
+        Password : "AB9E513482B8BAC3959C586209AE308B16E8",
+        To : 'mr.stark42@outlook.com',
+        From : document.getElementById("email").value,
+        Subject : "This is the subject",
+        Body : "Name : "  + document.getElementById("name").value
+                + "<br> Email : " + document.getElementById("email").value
+                + "<br> Phone number : " + document.getElementById("phone").value
+                + "<br> Order number : " + document.getElementById("order").value
+                + "<br> Address : " + document.getElementById("address").value
+    }).then(
+      message => alert("Your order has been placed !")
+    );
+    }
+</script>
+</body>
+</html>
